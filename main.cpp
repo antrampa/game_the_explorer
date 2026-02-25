@@ -95,10 +95,11 @@ int city_kastoria() {
     cout << "            You can enter, have fights         " << "\n";
     cout << "        Earn golds, XP, HP and Reputation      " << "\n";
     spaceBig();
+    pressKey();
     cout << "      You are in Enydreio in Ntailaki Area     " << "\n";
     cout << "              An Animal is facing you          " << "\n";
     spaceBig();
-    //std::string n, int health, int hitPower, int healthToGive, int xpToGive, int gold
+    pressKey();
     Animal an1("Duck", 20, 2, 5, 1, 100);
     an1.introduce();
     cout << "You want to fight or retreat ? (f/r)";
@@ -135,8 +136,8 @@ void retreat(Animal animal) {
 }
 
 void pressKey() {
-    std::cout << "Press Enter to continue..." << "\n\n";
+    std::cout << "\n(Press Enter to continue...)\n\n";
+    std::cin.clear(); // clear error flags
     std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-    std::cin.get();
-    //return 0;
+    std::cin.get();   // wait for Enter
 }
