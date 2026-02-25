@@ -1,0 +1,20 @@
+#ifndef ANIMAL_H
+#define ANIMAL_H
+
+#include <string>
+
+class Animal {
+    private:
+        std::string name;
+        int health;
+        int hitPower;
+        int healthToGive;
+        int xpToGive;
+        int gold;
+
+    public:
+        Animal(std::string n, int health, int hitPower, int healthToGive, int xpToGive, int gold);  // Constructor
+        void introduce();              // Method
+};
+
+#endif
