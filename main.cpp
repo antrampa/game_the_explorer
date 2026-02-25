@@ -1,7 +1,7 @@
 #include <iostream>
 #include <string>
 
-//#include "Animal.h"
+#include "Animal.h"
 using namespace std; 
 
  std::string cities[3] = {"KASTORIA", "FLORINA", "SERRES"};
@@ -9,8 +9,12 @@ using namespace std;
 void main_menu();
 int savingTheGame();
 int quiteFromTheGame();
+void spaceBig();
 int city_kastoria();
 int choose_city(int progress);
+void startFightMessage();
+void fight(Animal animal); 
+void retreat(Animal animal);
 
 
 int main() {
@@ -36,9 +40,9 @@ void main_menu() {
     cin >> choose;
     choose = std::tolower(choose);
     
-    if (choose == 'y' || choose == 'yes') {
+    if (choose == 'y') {
         choose_city(progress_city);
-    } else if (choose == 'n' || choose == 'no') {
+    } else if (choose == 'n') {
         cout << "You chose no.\n";
         savingTheGame();
         quiteFromTheGame();
@@ -66,6 +70,10 @@ int quiteFromTheGame() {
     return 0;
 }
 
+void spaceBig() {
+    cout << "\n\n\n";
+}
+
 int choose_city(int progress) {
     switch(progress) {
         case 0:
@@ -82,6 +90,38 @@ int city_kastoria() {
     cout << "                                               " << "\n";
     cout << "            You can enter, have fights         " << "\n";
     cout << "        Earn golds, XP, HP and Reputation      " << "\n";
+    spaceBig();
+    cout << "      You are in Enydreio in Ntailaki Area     " << "\n";
+    cout << "              An Animal is facing you          " << "\n";
+    spaceBig();
+    //std::string n, int health, int hitPower, int healthToGive, int xpToGive, int gold
+    Animal an1("Duck", 20, 2, 5, 1, 100);
+    an1.introduce();
+    cout << "You want to fight or retreat ? (f/r)";
+    char ch;
+    cin >> ch;
+    ch = std::tolower(ch);
+    if(ch == 'f') {
+        fight(an1);
+    } else {
+        retreat(an1);
+    }
 
     return 0;
+}
+
+void startFightMessage() {
+    cout << "!!!! Fight is starting !!!!" << "\n\n";
+    cout << "   Good luck little man " << "\n\n";
+}
+
+void fight(Animal animal) {
+    startFightMessage();
+    int damage = animal.attack();
+} 
+
+void retreat(Animal animal) {
+    cout << "Retreat, retreat!! " << "\n\n";
+    cout << ">I cann't face this " << animal.getName() << "\n";
+    cout << ">Maybe another time little man!" << "\n\n";
 }

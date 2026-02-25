@@ -15,6 +15,12 @@ class Animal {
     public:
         Animal(std::string n, int health, int hitPower, int healthToGive, int xpToGive, int gold);  // Constructor
         void introduce();              // Method
+        std::string getName();
+        int randomAttack(int min, int max);
+        int attack();
+        int getDamage(int damage);
+        int checkStatus();
+        bool isDead();
 };
 
 #endif
