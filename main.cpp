@@ -1,7 +1,9 @@
 #include <iostream>
 #include <string>
+#include <limits>
 
 #include "Animal.h"
+#include "Player.h"
 using namespace std; 
 
  std::string cities[3] = {"KASTORIA", "FLORINA", "SERRES"};
@@ -15,12 +17,14 @@ int choose_city(int progress);
 void startFightMessage();
 void fight(Animal animal); 
 void retreat(Animal animal);
+void pressKey();
 
+Player player("RandomPlayer1", 500, 10, 0);
 
 int main() {
     cout << "########         THE EXPlORER          ########" << "\n";
     cout << "######## The Game EXPlORER is starting ########" << "\n";
-
+    //Get players name
     main_menu();
 
     return 0;
@@ -102,6 +106,8 @@ int city_kastoria() {
     cin >> ch;
     ch = std::tolower(ch);
     if(ch == 'f') {
+        player.introduce();
+        pressKey();
         fight(an1);
     } else {
         retreat(an1);
@@ -112,16 +118,25 @@ int city_kastoria() {
 
 void startFightMessage() {
     cout << "!!!! Fight is starting !!!!" << "\n\n";
-    cout << "   Good luck little man " << "\n\n";
+    cout << "   Good luck lille bro " << "\n\n";
 }
 
 void fight(Animal animal) {
     startFightMessage();
+    pressKey();
     int damage = animal.attack();
+    pressKey();
+    player.getDamage(damage);
 } 
 
 void retreat(Animal animal) {
-    cout << "Retreat, retreat!! " << "\n\n";
     cout << ">I cann't face this " << animal.getName() << "\n";
     cout << ">Maybe another time little man!" << "\n\n";
+}
+
+void pressKey() {
+    std::cout << "Press Enter to continue..." << "\n\n";
+    std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+    std::cin.get();
+    //return 0;
 }

@@ -32,7 +32,7 @@ int Animal::randomAttack(int min, int max){
 }
 
 int Animal::attack(){
-    cout << "> Me, THE " << name << "\n will attack you now with my all power of " << hitPower << "XP\n";
+    cout << "> Me, THE " << name << "\n will attack you now with all my power of " << hitPower << "XP\n";
     int ap = randomAttack(hitPower/2, hitPower);
     cout << "The " << name << " attacked with " << ap << "XP\n";
     return ap;
