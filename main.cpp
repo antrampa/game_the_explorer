@@ -6,7 +6,8 @@
 #include "Player.h"
 using namespace std; 
 
- std::string cities[3] = {"KASTORIA", "FLORINA", "SERRES"};
+std::string cities[3] = {"KASTORIA", "FLORINA", "SERRES"};
+int progress_city = 0;
 
 void main_menu();
 int savingTheGame();
@@ -18,6 +19,9 @@ void startFightMessage();
 void fight(Animal animal); 
 void retreat(Animal animal);
 void pressKey();
+void continueFight(Animal animal);
+void youAreDead(Animal animal);
+void goNextCity();
 
 Player player("RandomPlayer1", 500, 10, 0);
 
@@ -31,7 +35,6 @@ int main() {
 }
 
 void main_menu() {
-    int progress_city = 0;
     char choose;
     cout << "###############################################" << "\n";
     cout << "########            Main menu          ########" << "\n";
@@ -94,11 +97,11 @@ int city_kastoria() {
     cout << "                                               " << "\n";
     cout << "            You can enter, have fights         " << "\n";
     cout << "        Earn golds, XP, HP and Reputation      " << "\n";
-    spaceBig();
+    //spaceBig();
     pressKey();
     cout << "      You are in Enydreio in Ntailaki Area     " << "\n";
     cout << "              An Animal is facing you          " << "\n";
-    spaceBig();
+    //spaceBig();
     pressKey();
     Animal an1("Duck", 20, 2, 5, 1, 100);
     an1.introduce();
@@ -127,7 +130,14 @@ void fight(Animal animal) {
     pressKey();
     int damage = animal.attack();
     pressKey();
-    player.getDamage(damage);
+    player.takeDamage(damage);
+    player.checkStatus();
+    if( player.isAlive() ) {
+        continueFight(animal);
+    } else {
+        youAreDead(animal);
+    }
+    cout << "Do you want to continue fight or want ? retreat (f/r)";
 } 
 
 void retreat(Animal animal) {
@@ -140,4 +150,51 @@ void pressKey() {
     std::cin.clear(); // clear error flags
     std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
     std::cin.get();   // wait for Enter
+    std::cin.clear(); // clear error flags
+}
+
+void continueFight(Animal animal) {
+    cout << "Do you want to continue fight or want ? retreat (f/r)";
+    //cout << "You want to fight or retreat ? (f/r)";
+    char ch;
+    cin >> ch;
+    ch = std::tolower(ch);
+    if(ch == 'f') {
+        int damage = player.attack();
+        pressKey();
+        animal.takeDamage(damage);
+        animal.checkStatus();
+        if(animal.isDead()) {
+            cout << "You killed the " << animal.getName() << "\n";
+            goNextCity();
+        } else {
+            pressKey();
+            int damage = animal.attack();
+            pressKey();
+            player.takeDamage(damage);
+            player.checkStatus();
+            if( player.isAlive() ) {
+                continueFight(animal);
+            } else {
+                youAreDead(animal);
+            }
+        }
+    } else {
+        retreat(animal);
+    }
+}
+
+void youAreDead(Animal animal) {
+    cout << "********* You Are DEAD lille Bro "<< player.getName() << "********************" << "\n\n";
+    cout << "********* The Great  "<< animal.getName() << " killed you with his great power!" << "\n\n";
+    cout << "  Your Total GOALD is: " << player.getGold() << "\n\n";
+}
+
+void goNextCity() {
+    cout << "**** Go to the Next City *******" << "\n\n";
+    cout << "  Now you have: " << "\n";
+    player.showStats();
+    progress_city++;
+    cout << "The city in front of you is " << cities[progress_city] << "\n";
+    cout << "Do you want to enter ? (y/n)" << "\n";
 }

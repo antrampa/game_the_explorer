@@ -38,7 +38,7 @@ int Animal::attack(){
     return ap;
 }
 
-int Animal::getDamage(int damage){
+int Animal::takeDamage(int damage){
     cout << "The " << name << " got damage of " << damage << "XP\n";
     health -= damage;
     return health;

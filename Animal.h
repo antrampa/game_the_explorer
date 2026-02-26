@@ -19,7 +19,7 @@ class Animal {
         std::string getName();
         int randomAttack(int min, int max);
         int attack();
-        int getDamage(int damage);
+        int takeDamage(int damage);
         int checkStatus();
         bool isDead();
 };

@@ -17,9 +17,12 @@ class Player {
         std::string getName();
         int randomAttack(int min, int max);
         int attack();
-        int getDamage(int damage);
+        int takeDamage(int damage);
         int checkStatus();
         bool isAlive();
         int getGold();
+        int takeGold(int gold);
+        int takeEverything(int hp, int xp, int gold);
+        int showStats();
 
 };
