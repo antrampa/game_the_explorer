@@ -9,6 +9,7 @@ class Player {
         int health;
         int hitPower;
         int gold;
+        std::string weapon;
 
     public:
         Player(std::string name,int health, int hitPower, int gold);

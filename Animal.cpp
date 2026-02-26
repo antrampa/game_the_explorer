@@ -52,3 +52,15 @@ int Animal::checkStatus(){
 bool Animal::isDead() {
     return health > 0 ? false : true;
 }
+
+int Animal::getHealthToGive() {
+    return healthToGive;
+}
+
+int Animal::getXpToGive() {
+    return xpToGive;
+}
+
+int Animal::getGold() {
+    return gold;
+}

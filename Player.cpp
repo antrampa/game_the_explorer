@@ -8,13 +8,14 @@ Player::Player(std::string n,int h, int hPower, int g) {
     health = h;
     hitPower = hPower;
     gold = g;
+    weapon = "<hands>";
 }
 
 void Player::introduce(){
     cout << "\n";
     cout << "> Hello there, I'm " << name << " and my max power is " << hitPower << "XP \n";
-    cout << "  My health is " << health << "HP. I will destroy you and take your gold." << " \n";
-    cout << "  No one will remember you " << "\n";
+    cout << "  My health is " << health << "HP. I will destroy you with my " << weapon << " and take your gold." << " \n";
+    cout << "  No-one will remember you " << "\n";
     cout << "\n";
 }   
 
@@ -67,11 +68,17 @@ int Player::takeGold(int g){
 }
 
 int Player::takeEverything(int hp, int xp, int g){
+    health += hp;
+    hitPower += xp;
     gold += g;
     return gold;
 }
 
 int Player::showStats() {
-
+    cout << "You now have " << "\n";
+    cout << "- Gold: " << gold << "\n"; 
+    cout << "- Power: " << hitPower << "\n";
+    cout << "- Health: " << health << "\n";
+    cout << "- Weapon: " << weapon << "\n";
     return 0;
 }

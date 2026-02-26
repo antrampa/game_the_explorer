@@ -22,6 +22,9 @@ class Animal {
         int takeDamage(int damage);
         int checkStatus();
         bool isDead();
+        int getHealthToGive();
+        int getXpToGive();
+        int getGold();
 };
 
 #endif

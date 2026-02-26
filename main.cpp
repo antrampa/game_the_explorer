@@ -166,6 +166,8 @@ void continueFight(Animal animal) {
         animal.checkStatus();
         if(animal.isDead()) {
             cout << "You killed the " << animal.getName() << "\n";
+            player.takeEverything(animal.getHealthToGive(), animal.getXpToGive(), animal.getGold());
+            player.showStats();
             goNextCity();
         } else {
             pressKey();
