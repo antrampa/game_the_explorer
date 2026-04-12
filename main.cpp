@@ -21,6 +21,7 @@ void retreat(Animal animal);
 void pressKey();
 void continueFight(Animal animal);
 void youAreDead(Animal animal);
+void moveOn();
 void goNextCity();
 
 Player player("RandomPlayer1", 500, 10, 0);
@@ -148,7 +149,7 @@ void retreat(Animal animal) {
 void pressKey() {
     std::cout << "\n(Press Enter to continue...)\n\n";
     std::cin.clear(); // clear error flags
-    std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+    std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n'); //,'\n'
     std::cin.get();   // wait for Enter
     std::cin.clear(); // clear error flags
 }
@@ -165,10 +166,13 @@ void continueFight(Animal animal) {
         animal.takeDamage(damage);
         animal.checkStatus();
         if(animal.isDead()) {
+            cout << "!!!! VICTORY !!!!" << endl;
             cout << "You killed the " << animal.getName() << "\n";
+            player.whatYouGot(animal.getName(), animal.getGold(), animal.getXpToGive(), animal.getHealthToGive());
             player.takeEverything(animal.getHealthToGive(), animal.getXpToGive(), animal.getGold());
             player.showStats();
-            goNextCity();
+            moveOn();
+            //goNextCity();
         } else {
             pressKey();
             int damage = animal.attack();
@@ -192,10 +196,22 @@ void youAreDead(Animal animal) {
     cout << "  Your Total GOALD is: " << player.getGold() << "\n\n";
 }
 
+void moveOn() {
+    cout << "**** Move On *******" << "\n\n";
+    cout << "  Do you want to move on? (y/n)" << "\n";
+    char ch;
+    cin >> ch;
+    ch = std::tolower(ch);
+    if(ch == 'y') {
+        goNextCity();
+    } else {
+
+    }
+}
+
 void goNextCity() {
     cout << "**** Go to the Next City *******" << "\n\n";
-    cout << "  Now you have: " << "\n";
-    player.showStats();
+    //player.showStats();
     progress_city++;
     cout << "The city in front of you is " << cities[progress_city] << "\n";
     cout << "Do you want to enter ? (y/n)" << "\n";

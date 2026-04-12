@@ -14,6 +14,7 @@ class Animal {
         int gold;
 
     public:
+        Animal();
         Animal(std::string n, int health, int hitPower, int healthToGive, int xpToGive, int gold);  // Constructor
         void introduce();              // Method
         std::string getName();

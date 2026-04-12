@@ -25,5 +25,5 @@ class Player {
         int takeGold(int gold);
         int takeEverything(int hp, int xp, int gold);
         int showStats();
-
+        int whatYouGot(std::string name, int hp, int xp, int g);
 };

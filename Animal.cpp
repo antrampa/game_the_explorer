@@ -3,6 +3,7 @@
 #include <random>
 using namespace std;
 
+Animal::Animal() {}
 Animal::Animal(std::string n, int h, int hPower, int hp, int xp, int g){
         name = n;
         health = h;

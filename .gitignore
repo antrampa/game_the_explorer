@@ -1,4 +1,6 @@
 *.out
 *.exe
+*.o
 Player.h.gch
 the_explorer.tar.xz
+the_explorer.zip

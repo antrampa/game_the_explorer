@@ -82,3 +82,11 @@ int Player::showStats() {
     cout << "- Weapon: " << weapon << "\n";
     return 0;
 }
+
+int Player::whatYouGot(std::string name, int g, int xp, int hp) {
+    cout << "You got from " << name << "\n";
+    cout << "- Gold: " << g << "\n"; 
+    cout << "- Power: " << xp << "\n";
+    cout << "- Health: " << hp << "\n";
+    return 0;
+}
