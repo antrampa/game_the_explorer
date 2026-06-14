@@ -5,3 +5,5 @@ Player.h.gch
 the_explorer.tar.xz
 the_explorer.zip
 build/
+.DS_Store
+app

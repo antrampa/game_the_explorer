@@ -4,16 +4,21 @@
 
 #include "Animal.h"
 #include "Player.h"
+#include "City.h"
+#include "CityKastoria.h"
 using namespace std; 
 
 std::string cities[3] = {"KASTORIA", "FLORINA", "SERRES"};
 int progress_city = 0;
 
+void clearScreen();
 void main_menu();
 int savingTheGame();
 int quiteFromTheGame();
 void spaceBig();
-int city_kastoria();
+int playInCity(City &city);
+// int city_kastoria();
+int city_kastoria(CityKastoria *kastoria);
 int choose_city(int progress);
 void startFightMessage();
 void fight(Animal animal); 
@@ -25,14 +30,30 @@ void moveOn();
 void goNextCity();
 
 Player player("RandomPlayer1", 500, 10, 0);
+// City city("KASTORIA");
+// std::vector<Animal> animalsKastorias = { 
+//     Animal("Duck", 20, 2, 5, 1, 100),
+//     Animal("Dog", 30, 3, 10, 2, 200), 
+//     Animal("Cat", 40, 4, 15, 3, 300)
+// };
+// CityKastoria cityKastoria("KASTORIA", animalsKastorias);
 
 int main() {
+    clearScreen();
     cout << "########         THE EXPlORER          ########" << "\n";
     cout << "######## The Game EXPlORER is starting ########" << "\n";
     //Get players name
     main_menu();
 
     return 0;
+}
+
+void clearScreen() {
+    #ifdef _WIN32
+        system("cls");
+    #else
+        system("clear");
+    #endif
 }
 
 void main_menu() {
@@ -84,26 +105,58 @@ void spaceBig() {
 
 int choose_city(int progress) {
     switch(progress) {
-        case 0:
-            city_kastoria();
+        case 0: {
+            //city_kastoria();
+
+            std::vector<Animal> animalsKastorias = { 
+                Animal("Duck", 20, 2, 5, 1, 100),
+                Animal("Dog", 30, 3, 10, 2, 200), 
+                Animal("Cat", 40, 4, 15, 3, 300)
+            };
+            CityKastoria cityKastoria("KASTORIA", animalsKastorias);
+            playInCity(cityKastoria);
+             break;  // 👈 add break
+        }  // 👈 add closing brace
         // default:
         //      quiteFromTheGame();   
     }
     return 0;
 }
 
-int city_kastoria() {
-    cout << "       You are in the gate of the City         " << "\n";
-    cout << "                    KASTORIA                   " << "\n";
-    cout << "                                               " << "\n";
-    cout << "            You can enter, have fights         " << "\n";
-    cout << "        Earn golds, XP, HP and Reputation      " << "\n";
-    //spaceBig();
+int playInCity(City &city) {
+    clearScreen();
+    city.showWelcomeMessage();
     pressKey();
-    cout << "      You are in Enydreio in Ntailaki Area     " << "\n";
-    cout << "              An Animal is facing you          " << "\n";
-    //spaceBig();
+    if (dynamic_cast<CityKastoria*>(&city)) {
+        cout << "[DEBUG] You are in Kastoria City\n";
+        //city_kastoria();
+        CityKastoria *kastoria = dynamic_cast<CityKastoria*>(&city);
+        city_kastoria(kastoria);
+
+    } else {
+        cout << "This city is not implemented yet.\n";
+    }
+    return 0;   
+
+}
+
+int city_kastoria(CityKastoria *kastoria) {
+    clearScreen();
+    kastoria->enterKastoria();
     pressKey();
+    
+
+    // cout << "       You are in the gate of the City         " << "\n";
+    // cout << "                    KASTORIA                   " << "\n";
+    // cout << "                                               " << "\n";
+    // cout << "            You can enter, have fights         " << "\n";
+    // cout << "        Earn golds, XP, HP and Reputation      " << "\n";
+    // //spaceBig();
+    // pressKey();
+    // cout << "      You are in Enydreio in Ntailaki Area     " << "\n";
+    // cout << "              An Animal is facing you          " << "\n";
+    // //spaceBig();
+    // pressKey();
     Animal an1("Duck", 20, 2, 5, 1, 100);
     an1.introduce();
     cout << "You want to fight or retreat ? (f/r)";

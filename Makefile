@@ -1,14 +1,15 @@
 CXX = g++
-CXXFLAGS = -std=c++20 -Wall
+CXXFLAGS = -std=c++20 -Wall -Iinclude
 
-SRC = *.cpp
-OBJ = $(SRC:.cpp=.o)
+SRC = $(wildcard src/*.cpp)
+OBJ = $(SRC:src/%.cpp=build/%.o)
 
 app: $(OBJ)
 	$(CXX) $(OBJ) -o app
 
-%.o: %.cpp
+build/%.o: src/%.cpp
+	mkdir -p build
 	$(CXX) $(CXXFLAGS) -c $< -o $@
 
 clean:
-	rm -f *.o app
+	rm -rf build app
