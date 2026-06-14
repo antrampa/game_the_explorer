@@ -11,17 +11,18 @@ class CityKastoria : public City {
         Animal animal;
         std::vector<Animal> animals;
 
-    public: 
+    public:
+        CityKastoria(std::string name); 
         CityKastoria(std::string name, std::vector<Animal> animals);
         Animal getAnimal();
         std::vector<Animal> getAnimals();
         int enterKastoria();
         int introOfCity();
         int play() override; //TODO REMOVE
-        int firstAnimal();
-        int secondAnimal();
-        int thirdAAnimal();
-        int thirdBnimal();
-        int finalAnimal();
+        Animal firstAnimal();
+        Animal secondAnimal();
+        Animal thirdAAnimal();
+        Animal thirdBnimal();
+        Animal finalAnimal();
         
 };

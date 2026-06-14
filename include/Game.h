@@ -1,6 +1,9 @@
 #pragma once
 
 #include "Player.h"
+#include "CityKastoria.h"
+#include "Animal.h"
+
 #include <string>
 
 class Game {
@@ -13,10 +16,23 @@ class Game {
         int currentLevel;
         int score;
         int progressCity;
+        std::string cities[3] = {"KASTORIA", "FLORINA", "SERRES"};
+        int progress_city;
 
     public:
         Game(std::string name);
         Game(std::string name, Player *player);
         ~Game();
+        int start();
+        void clearScreen();
+        void pressKey();
+        void main_menu();
         int play();
+        int savingTheGame();
+        int quiteFromTheGame();
+        void startFightMessage();
+        int fight(Animal animal);
+        void retreat(Animal animal);  
+        int choose_city(int progress);
+        int playInCityKastoria(CityKastoria *kastoria);
 };

@@ -6,6 +6,7 @@
 #include "Player.h"
 #include "City.h"
 #include "CityKastoria.h"
+#include "Game.h"
 using namespace std; 
 
 std::string cities[3] = {"KASTORIA", "FLORINA", "SERRES"};
@@ -30,6 +31,9 @@ void moveOn();
 void goNextCity();
 
 Player player("RandomPlayer1", 500, 10, 0);
+
+Player *player1 = new Player("RandomPlayer1Pointer", 500, 10, 0);
+Game game("EXPlORER", &player);
 // City city("KASTORIA");
 // std::vector<Animal> animalsKastorias = { 
 //     Animal("Duck", 20, 2, 5, 1, 100),
@@ -40,10 +44,11 @@ Player player("RandomPlayer1", 500, 10, 0);
 
 int main() {
     clearScreen();
-    cout << "########         THE EXPlORER          ########" << "\n";
-    cout << "######## The Game EXPlORER is starting ########" << "\n";
+    // cout << "########         THE EXPlORER          ########" << "\n";
+    // cout << "######## The Game EXPlORER is starting ########" << "\n";
     //Get players name
-    main_menu();
+    //main_menu();
+    game.start();
 
     return 0;
 }
