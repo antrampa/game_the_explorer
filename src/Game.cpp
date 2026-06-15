@@ -168,7 +168,7 @@ int Game::playInCityKastoria(CityKastoria *kastoria) {
     Animal an1 = kastoria->firstAnimal();
     bool playerRetreat = false;
     do {
-        cout << "You want to fight or retreat ? (f/r) " << endl;
+        cout << endl << "Do You want to fight or retreat ? (f/r) " << endl;
         char ch;
         cin >> ch;
         ch = std::tolower(ch);
@@ -237,7 +237,7 @@ int Game::fight(Animal animal) {
     clearScreen();
     player->takeDamage(damage);
     player->checkStatus();
-    cout << endl << "Do you want to continue fight or want ? retreat (f/r) " << endl;
+    //cout << endl << "Do you want to continue fight or want ? retreat (f/r) " << endl;
     return 0;
 } 
 
