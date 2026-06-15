@@ -14,9 +14,9 @@ Animal::Animal(std::string n, int h, int hPower, int hp, int xp, int g){
 }
 
 void Animal::introduce() {
-    cout << "Hi, I'm the " << name << " and my max power is " << hitPower << " \n";
-    cout << "My health is " << health << ". You can't destroy me small man" << " \n";
-    cout << "If you so, I'll give you " << xpToGive << "XP, " << healthToGive << "HP and " << gold << " GOLD " << " \n";
+    cout << "> Hi, I'm the " << name << " and my max power is " << hitPower << " \n";
+    cout << "  My health is " << health << ". You can't destroy me small man" << " \n";
+    cout << "  If you so, I'll give you " << xpToGive << "XP, " << healthToGive << "HP and " << gold << " GOLD " << " \n";
     cout << "\n";
 }
 

@@ -23,8 +23,9 @@ CityKastoria::CityKastoria(std::string name, std::vector<Animal> animals)
 
 int CityKastoria::enterKastoria() {
 
-    cout << "      You are in Enydreio in Ntailaki Area     " << "\n";
-    cout << "              An Animal is facing you          " << "\n";
+    cout << "          You are in Kastoria Gates     " << "\n";
+    cout << "       There are dangerous animals here          " << "\n";
+    cout << " That means there are golds and opportunities          " << "\n";
 
     return 0;
 }
@@ -53,6 +54,12 @@ Animal CityKastoria::firstAnimal() {
     Animal animal = animals[0];
     cout << "      You are in Enydreio in Ntailaki Area     " << "\n";
     cout << "              An Animal is facing you          " << "\n";
+    animal.introduce();
+    return animal;
+}
+
+Animal CityKastoria::getAnimal(int number) {
+    Animal animal = animals[number];
     animal.introduce();
     return animal;
 }

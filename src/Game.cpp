@@ -60,13 +60,17 @@ void Game::main_menu() {
     choose = std::tolower(choose);
 
     if(choose == '1'){
+        clearScreen();
         play();
     } else if(choose == '2') {
+        clearScreen();
         cout << "Load Saved Game option selected." << "\n";
-    } else if (choose == '3') {
+    } else if (choose == '3') {        
+        clearScreen();    
         cout << "Exit option selected." << "\n";
         isGameOver = true;
     } else {
+        clearScreen();
         cout << "Invalid input. Please choose a valid option." << "\n";
         main_menu();
     }
@@ -75,16 +79,16 @@ void Game::main_menu() {
 
 int Game::play() {
 
-    while (!isGameOver) {
-        
+    while (!isGameOver) {        
         char choose;
-        cout << "The city in front of you is " << cities[progress_city] << "\n";
-        cout << "Do you want to enter ? (y/n)" << "\n";
+        cout << "The city in front of you is " << cities[progressCity] << "\n";
+        cout << "Do you want to enter ? (y/n) [Y]" << "\n";
         cin >> choose;
         choose = std::tolower(choose);
 
-         if (choose == 'y') {
-            choose_city(progress_city);
+         if (choose != 'n') {
+            cout << "progressCity:" << progressCity << endl;
+            choose_city(progressCity);
         } else if (choose == 'n') { //TODO: Check for other options
             cout << "You chose no.\n";
             savingTheGame();
@@ -143,18 +147,12 @@ int Game::quiteFromTheGame() {
 int Game::choose_city(int progress) {
     switch(progress) {
         case 0: {
-            //city_kastoria();
-
-            // std::vector<Animal> animalsKastorias = { 
-            //     Animal("Duck", 20, 2, 5, 1, 100),
-            //     Animal("Dog", 30, 3, 10, 2, 200), 
-            //     Animal("Cat", 40, 4, 15, 3, 300)
-            // };
-            //CityKastoria cityKastoria("KASTORIA", animalsKastorias);
+            cout << "City Kastoria!!" << endl;
+            
             CityKastoria cityKastoria("KASTORIA");
             playInCityKastoria(&cityKastoria);
-             break;  // 👈 add break
-        }  // 👈 add closing brace
+             break;  
+        }  
         // default:
         //      quiteFromTheGame();   
     }
@@ -166,21 +164,24 @@ int Game::playInCityKastoria(CityKastoria *kastoria) {
     clearScreen();
     kastoria->enterKastoria();
     pressKey();
+    clearScreen();
     Animal an1 = kastoria->firstAnimal();
     bool playerRetreat = false;
     do {
-    cout << "You want to fight or retreat ? (f/r)";
-    char ch;
-    cin >> ch;
-    ch = std::tolower(ch);
-    if(ch == 'f') {
-        this->player->introduce();
-        pressKey();
-        fight(an1);
-    } else {
-        retreat(an1);
-        playerRetreat = true;
-    }
+        cout << "You want to fight or retreat ? (f/r) " << endl;
+        char ch;
+        cin >> ch;
+        ch = std::tolower(ch);
+        if(ch == 'f') {
+            clearScreen();
+            this->player->introduce();
+            pressKey();
+            clearScreen();
+            fight(an1);
+        } else {
+            retreat(an1);
+            playerRetreat = true;
+        }
     } while (this->player->isAlive() && an1.isDead() == false && playerRetreat == false);
 
     // cout << "       You are in the gate of the City         " << "\n";
@@ -230,16 +231,13 @@ void Game::startFightMessage() {
 int Game::fight(Animal animal) {
     startFightMessage();
     pressKey();
+    clearScreen();
     int damage = animal.attack();
     pressKey();
+    clearScreen();
     player->takeDamage(damage);
     player->checkStatus();
-    // if( player->isAlive() ) {
-    //     continueFight(animal);
-    // } else {
-    //     youAreDead(animal);
-    // }
-    cout << "Do you want to continue fight or want ? retreat (f/r)";
+    cout << endl << "Do you want to continue fight or want ? retreat (f/r) " << endl;
     return 0;
 } 
 

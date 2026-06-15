@@ -24,5 +24,6 @@ class CityKastoria : public City {
         Animal thirdAAnimal();
         Animal thirdBnimal();
         Animal finalAnimal();
+        Animal getAnimal(int number);
         
 };

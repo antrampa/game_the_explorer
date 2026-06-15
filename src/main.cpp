@@ -34,20 +34,9 @@ Player player("RandomPlayer1", 500, 10, 0);
 
 Player *player1 = new Player("RandomPlayer1Pointer", 500, 10, 0);
 Game game("EXPlORER", &player);
-// City city("KASTORIA");
-// std::vector<Animal> animalsKastorias = { 
-//     Animal("Duck", 20, 2, 5, 1, 100),
-//     Animal("Dog", 30, 3, 10, 2, 200), 
-//     Animal("Cat", 40, 4, 15, 3, 300)
-// };
-// CityKastoria cityKastoria("KASTORIA", animalsKastorias);
 
 int main() {
     clearScreen();
-    // cout << "########         THE EXPlORER          ########" << "\n";
-    // cout << "######## The Game EXPlORER is starting ########" << "\n";
-    //Get players name
-    //main_menu();
     game.start();
 
     return 0;
