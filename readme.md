@@ -32,7 +32,7 @@ And to clean:
 
 >cmake -B build
 
->cmake --build
+>cmake --build build
 
 For debug
 

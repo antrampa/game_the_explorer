@@ -1,9 +1,12 @@
-cmake_minimum_required(VERSION 3.20)
-project(game_the_explorer)
+cmake_minimum_required(VERSION 3.28)
+#cmake_minimum_required(VERSION 4.4)
 
-set(CMAKE_CXX_STANDARD 20)
+project(game_the_explorer CXX)
 
 file(GLOB_RECURSE SRC src/*.cpp)
 
-add_executable(app ${SRC})
-target_include_directories(app PRIVATE include)
+add_executable(TheExplorer ${SRC})
+target_include_directories(TheExplorer PRIVATE ${CMAKE_SOURCE_DIR}/include)
+
+target_compile_features(TheExplorer PRIVATE cxx_std_20)
+
