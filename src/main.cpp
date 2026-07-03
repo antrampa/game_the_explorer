@@ -30,9 +30,9 @@ void youAreDead(Animal animal);
 void moveOn();
 void goNextCity();
 
-Player player("RandomPlayer1", 500, 10, 0);
+Player player("RandomPlayer1", 500, 10, 0, "Hands");
 
-Player *player1 = new Player("RandomPlayer1Pointer", 500, 10, 0);
+Player *player1 = new Player("RandomPlayer1Pointer", 500, 10, 0, "Hands");
 Game game("EXPlORER", &player);
 
 int main() {
