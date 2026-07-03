@@ -10,7 +10,7 @@ using namespace std;
 
 
 
-Game::Game(std::string name) : Game(name, new Player("RandomPlayer1", 500, 10, 0)) { }
+Game::Game(std::string name) : Game(name, new Player("RandomPlayer1", 500, 10, 0, "<hands>")) { }
 
 Game::Game(string name, Player *player) {
     this->name = name;
@@ -29,6 +29,12 @@ Game::Game(string name, Player *player) {
 
 Game::~Game() {
     // Destructor implementation (if needed)
+}
+
+void Game::printGameLogo() {
+    clearScreen();
+    cout << "########         GAME LOGO HERE         ########" << "\n";
+    cout << "########         The ExPLORER with /-/-/         ########" << "\n";
 }
 
 int Game::start() {

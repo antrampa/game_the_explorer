@@ -3,28 +3,39 @@
 #include <random>
 using namespace std;
 
-Player::Player(std::string n,int h, int hPower, int g) {
-    name = n;
-    health = h;
-    hitPower = hPower;
-    gold = g;
-    weapon = "<hands>";
+// std::string name_;
+//         int health_;
+//         int hitPower_;
+//         int gold_;
+//         std::string weapon_;
+
+Player::Player(std::string name,int health, int hitPower, int gold, std::string weapon) : 
+                name_(name), health_(health), hitPower_(hitPower), gold_(gold), weapon_(weapon)
+{
 }
+
+// Player::Player(std::string n,int h, int hPower, int g) {
+//     name = n;
+//     health = h;
+//     hitPower = hPower;
+//     gold = g;
+//     weapon = "<hands>";
+// }
 
 void Player::introduce(){
     cout << "\n";
-    cout << "> Hello there, I'm " << name << " and my max power is " << hitPower << "XP \n";
-    cout << "  My health is " << health << "HP. I will destroy you with my " << weapon << " and take your gold." << " \n";
+    cout << "> Hello there, I'm " << name_ << " and my max power is " << hitPower_ << "XP \n";
+    cout << "  My health is " << health_ << "HP. I will destroy you with my " << weapon_ << " and take your gold." << " \n";
     cout << "  No-one will remember you " << "\n";
     cout << "\n";
 }   
 
-void Player::setName(std::string n){
-    name = n;
+void Player::setName(std::string name){
+    name_ = name;
 }
 
 std::string Player::getName(){
-    return name;
+    return name_;
 }
 
 int Player::randomAttack(int min, int max){
@@ -36,57 +47,57 @@ int Player::randomAttack(int min, int max){
 }
 
 int Player::attack(){
-    cout << "> Me, " << name << "\n will attack you now with all my power of " << hitPower << "XP\n";
-    int ap = randomAttack(hitPower/2, hitPower);
+    cout << "> Me, " << name_ << "\n will attack you now with all my power of " << hitPower_ << "XP\n";
+    int ap = randomAttack(hitPower_/2, hitPower_);
     cout << "You attacked with " << ap << "XP\n";
     return ap;
 }
 
 int Player::takeDamage(int damage){
     cout << "You got a damage of " << damage << "XP. \n";
-    health -= damage;
-    cout << "Your remaining health is " << health << "HP \n";
-    return health;
+    health_ -= damage;
+    cout << "Your remaining health is " << health_ << "HP \n";
+    return health_;
 }
 
 int Player::checkStatus(){
-    cout << "Your current health " << health << "HP \n";
-    return health;
+    cout << "Your current health " << health_ << "HP \n";
+    return health_;
 }
 
 bool Player::isAlive(){
-    return health > 0;
+    return health_ > 0;
 }
 
 int Player::getGold(){
-    return gold;
+    return gold_;
 }
 
 int Player::takeGold(int g){
-    gold += g;
-    return gold;
+    gold_ += g;
+    return gold_;
 }
 
-int Player::takeEverything(int hp, int xp, int g){
-    health += hp;
-    hitPower += xp;
-    gold += g;
-    return gold;
+int Player::takeEverything(int health, int hitPower, int gold){
+    health_ += health;
+    hitPower_ += hitPower;
+    gold_ += gold;
+    return gold_;
 }
 
 int Player::showStats() {
     cout << "You now have " << "\n";
-    cout << "- Gold: " << gold << "\n"; 
-    cout << "- Power: " << hitPower << "\n";
-    cout << "- Health: " << health << "\n";
-    cout << "- Weapon: " << weapon << "\n";
+    cout << "- Gold: " << gold_ << "\n"; 
+    cout << "- Power: " << hitPower_ << "\n";
+    cout << "- Health: " << health_ << "\n";
+    cout << "- Weapon: " << weapon_ << "\n";
     return 0;
 }
 
-int Player::whatYouGot(std::string name, int g, int xp, int hp) {
+int Player::whatYouGot(std::string name, int gold, int hitPower, int health) {
     cout << "You got from " << name << "\n";
-    cout << "- Gold: " << g << "\n"; 
-    cout << "- Power: " << xp << "\n";
-    cout << "- Health: " << hp << "\n";
+    cout << "- Gold: " << gold << "\n"; 
+    cout << "- Power: " << hitPower << "\n";
+    cout << "- Health: " << health << "\n";
     return 0;
 }

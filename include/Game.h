@@ -23,6 +23,7 @@ class Game {
         Game(std::string name);
         Game(std::string name, Player *player);
         ~Game();
+        void printGameLogo();
         int start();
         void clearScreen();
         void pressKey();

@@ -5,14 +5,14 @@
 class Player {
 
     private:
-        std::string name;
-        int health;
-        int hitPower;
-        int gold;
-        std::string weapon;
+        std::string name_;
+        int health_;
+        int hitPower_;
+        int gold_;
+        std::string weapon_;
 
     public:
-        Player(std::string name,int health, int hitPower, int gold);
+        Player(std::string name,int health, int hitPower, int gold, std::string weapon);
         void introduce();     
         void setName(std::string n);         
         std::string getName();
