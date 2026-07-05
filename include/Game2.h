@@ -10,4 +10,8 @@ class Game2 {
         Game2(std::string name);
         ~Game2();
         void printGameLogo();
+        bool startGame();
+        int printGameMenu();
+        int playTheGame(); 
+        int loadSavedGame();
 };
